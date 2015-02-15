@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+    <param name="plugin-icon">images/pluginIcon.png</param>
+    <param name="plugin-logo">images/pluginLogo.png</param>
+  </plugin-info>
+  <!-- add our i18n resource -->
+  <resource type="i18n" name="i18n" location="quick-mockup-issue"/>
+  <!-- add our web resources -->
+  <web-resource key="quick-mockup-issue-resources" name="quick-mockup-issue Web Resources">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <resource type="download" name="quick-mockup-issue.css" location="/css/quick-mockup-issue.css"/>
+    <resource type="download" name="quick-mockup-issue.js" location="/js/quick-mockup-issue.js"/>
+    <resource type="download" name="images/" location="/images"/>
+    <context>quick-mockup-issue</context>
+  </web-resource>
+
+  <!-- publish our component -->
+  <!--<component key="myPluginComponent" class="com.github.ziohimself.qumi.MyPluginComponentImpl" public="true">-->
+    <!--<interface>com.github.ziohimself.qumi.MyPluginComponent</interface>-->
+  <!--</component>-->
+
+  <!-- import from the product container -->
+  <!--<component-import key="applicationProperties" interface="com.atlassian.sal.api.ApplicationProperties"/>-->
+  <component-import key="applicationProperties"
+                    interface="com.atlassian.jira.config.properties.ApplicationProperties"/>
+  <component-import key="velocityManager"
+                    interface="com.atlassian.velocity.VelocityManager"/>
+  <component-import key="pageBuilderService"
+                    interface="com.atlassian.webresource.api.assembler.PageBuilderService"/>
+
+  <rest name="Quick Mockup Issue Resource" i18n-name-key="quick-mockup-issue-resource.name" key="quick-mockup-issue-resource" path="/qumi" version="1.0">
+    <description key="quick-mockup-issue-resource.description">The Quick Mockup Issue Resource Plugin</description>
+  </rest>
+</atlassian-plugin>

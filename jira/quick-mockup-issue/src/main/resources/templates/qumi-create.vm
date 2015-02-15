@@ -1,0 +1,12 @@
+#* @vtlvariable name="resourceTagsSupplier" type="com.google.common.base.Supplier" *#
+#* @vtlvariable name="requiredResources" type="com.atlassian.webresource.api.assembler.RequiredResources" *#
+<html>
+<head>
+    <title>Quick-Mockup-Issue Create Form</title>
+</head>
+<body>
+    #set($noout = $!{requiredResources.requireWebResource("com.github.ziohimself.quick-mockup-issue:quick-mockup-issue-resources")})
+    ${resourceTagsSupplier.get()}
+    Form TBD and submit
+</body>
+</html>
