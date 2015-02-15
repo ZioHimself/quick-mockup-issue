@@ -7,6 +7,22 @@
 <body>
     #set($noout = $!{requiredResources.requireWebResource("com.github.ziohimself.quick-mockup-issue:quick-mockup-issue-resources")})
     ${resourceTagsSupplier.get()}
-    Form TBD and submit
+    <form id="qumi-create-form" class="aui">
+        <div class="field-group">
+            <label for="summary-input">Summary
+                <span class="aui-icon icon-required">(required)</span></label>
+            <input id="summary-input" name="summary-input"  class="text medium-field" type="text" placeholder="Short summary goes here...">
+            <div class="description">Short summary to identify the idea.</div>
+        </div>
+        <div class="field-group">
+            <label for="description-input">Description</label>
+            <textarea id="description-input" class="textarea" name="description-input" placeholder="Description goes here..."></textarea>
+        </div>
+        <div class="buttons-container">
+            <div class="buttons">
+                <input id="qumi-create-button" class="button submit" type="submit" value="Create">
+            </div>
+        </div>
+    </form>
 </body>
 </html>
