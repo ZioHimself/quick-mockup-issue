@@ -2,6 +2,8 @@ package com.github.ziohimself.qumi.impl.rest;
 
 import com.atlassian.jira.config.properties.APKeys;
 import com.atlassian.jira.config.properties.ApplicationProperties;
+import com.atlassian.jira.issue.AttachmentManager;
+import com.atlassian.jira.issue.attachment.CreateAttachmentParamsBean;
 import com.atlassian.plugins.rest.common.security.AnonymousAllowed;
 import com.atlassian.velocity.VelocityManager;
 import com.atlassian.webresource.api.UrlMode;
@@ -12,8 +14,10 @@ import com.github.ziohimself.qumi.api.rest.CreateMockupIssueResource;
 import com.google.common.base.Supplier;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import org.apache.commons.codec.binary.Base64;
 
 import javax.annotation.Nonnull;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -48,14 +52,18 @@ public class CreateMockupIssueResourceImpl implements CreateMockupIssueResource 
             return stringWriter.toString();
         }};
 
-        Map<String,Object> context = Maps.newHashMap(ImmutableMap.<String, Object>builder()
-                        .put("requiredResources", requiredResources)
-                        .put("resourceTagsSupplier", resourceTagsSupplier)
-                        .build()
-        );
-
         String baseUrl=applicationProperties.getString(APKeys.JIRA_BASEURL);
         String webworkEncoding = applicationProperties.getString(APKeys.JIRA_WEBWORK_ENCODING);
+
+        Map<String,Object> context = Maps.newHashMap(ImmutableMap.<String, Object>builder()
+                        .put("summaryId", SUMMARY_INPUT_PARAM)
+                        .put("descriptionId", DESCRIPTION_INPUT_PARAM)
+                        .put("mockupUrlId", MOCKUP_IMAGE_URL_INPUT_PARAM)
+                        .put("requiredResources", requiredResources)
+                        .put("resourceTagsSupplier", resourceTagsSupplier)
+                        .put("baseUrl", baseUrl)
+                        .build()
+        );
 
         String renderedText = velocityManager.getEncodedBody("templates/", "qumi-create.vm", baseUrl, webworkEncoding, context);
 
@@ -65,7 +73,12 @@ public class CreateMockupIssueResourceImpl implements CreateMockupIssueResource 
     @POST
     @AnonymousAllowed
     @Produces({MediaType.APPLICATION_JSON})
-    public Response doCreate() {
-        return Response.ok(Maps.newHashMap(ImmutableMap.of("foo", "bar"))).build();
+    public Response doCreate(@FormParam(SUMMARY_INPUT_PARAM) String summary, @FormParam("description-input") String description, @FormParam("mockup-image-url-input") String imageUrl) {
+        return Response.ok(Maps.newHashMap(ImmutableMap.builder()
+                .put(SUMMARY_INPUT_PARAM, summary)
+                .put(DESCRIPTION_INPUT_PARAM, description)
+                .put(MOCKUP_IMAGE_URL_INPUT_PARAM, imageUrl)
+                .build()
+        )).build();
     }
 }
