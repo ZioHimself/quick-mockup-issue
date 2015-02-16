@@ -11,16 +11,22 @@
         <div class="field-group">
             <label for="summary-input">Summary
                 <span class="aui-icon icon-required">(required)</span></label>
-            <input id="summary-input" name="summary-input"  class="text medium-field" type="text" placeholder="Short summary goes here...">
+            <input id="summary-input" name="summary-input" class="text medium-field" type="text" placeholder="Short summary goes here..."/>
             <div class="description">Short summary to identify the idea.</div>
         </div>
         <div class="field-group">
             <label for="description-input">Description</label>
             <textarea id="description-input" class="textarea" name="description-input" placeholder="Description goes here..."></textarea>
         </div>
+        <div class="field-group">
+            <label for="mockup-image-url-input">Mock-up</label>
+            <input id="mockup-image-url-input" name="mockup-image-url-input" type="hidden"/>
+            #parse("templates/qumi-mockup-field.vm")
+            <div class="description">A sketch of the idea.</div>
+        </div>
         <div class="buttons-container">
             <div class="buttons">
-                <input id="qumi-create-button" class="button submit" type="submit" value="Create">
+                <input id="qumi-create-button" class="button submit" type="submit" value="Create"/>
             </div>
         </div>
     </form>

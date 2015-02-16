@@ -14,7 +14,7 @@
   <web-resource key="quick-mockup-issue-resources" name="quick-mockup-issue Web Resources">
     <dependency>com.atlassian.auiplugin:ajs</dependency>
     <resource type="download" name="quick-mockup-issue.css" location="/css/quick-mockup-issue.css"/>
-    <resource type="download" name="quick-mockup-issue.js" location="/js/quick-mockup-issue.js"/>
+    <resource type="download" name="main.js" location="/js/main.js"/>
     <resource type="download" name="images/" location="/images"/>
     <context>quick-mockup-issue</context>
   </web-resource>
