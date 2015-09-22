@@ -29,8 +29,7 @@ import javax.ws.rs.core.MediaType;
  * HelloService!
  */
 @Path( "HelloService" )
-public interface HelloService
-{
+public interface HelloService {
     @Path( "sayHello/{who}" )
     @GET
     @Produces( { MediaType.TEXT_PLAIN } )
