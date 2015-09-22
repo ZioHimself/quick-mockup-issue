@@ -22,15 +22,23 @@ package com.github.ziohimself.qumi.api.impl;
 import com.github.ziohimself.qumi.api.HelloService;
 import org.springframework.stereotype.Service;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
 /**
  * @author Olivier Lamy
  */
 @Service( "helloService#default" )
+@Path( "/HelloService" )
 public class DefaultHelloService
-    implements HelloService
-{
-    public String sayHello( String who )
-    {
+    implements HelloService {
+    @Path( "/sayHello/{who}" )
+    @GET
+    @Produces( { MediaType.TEXT_PLAIN } )
+    public String sayHello( @PathParam("who") String who ) {
         return "Hello " + who;
     }
 }

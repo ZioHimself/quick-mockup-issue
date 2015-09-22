@@ -38,12 +38,12 @@
   <context:annotation-config />
   <context:component-scan base-package="com.github.ziohimself.qumi"/>
 
-  <jaxrs:server id="testServices" address="/testServices">
+  <!--<jaxrs:server id="testServices" address="/testServices">-->
 
-    <jaxrs:serviceBeans>
-      <ref bean="helloService#default"/>
-    </jaxrs:serviceBeans>
+    <!--<jaxrs:serviceBeans>-->
+      <!--<ref bean="helloService#default"/>-->
+    <!--</jaxrs:serviceBeans>-->
 
-   </jaxrs:server>
+   <!--</jaxrs:server>-->
 
 </beans>

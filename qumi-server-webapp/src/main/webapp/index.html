@@ -47,7 +47,7 @@
         $("#send-btn").on("click", function(){
             $.ajax({
               type: "GET",
-              url: "restServices/testServices/HelloService/sayHello/"+$("#who").val()
+              url: "restServices/HelloService/sayHello/"+$("#who").val()
             }).done(function( msg ) {
               $("#response").addClass("alert-message");
               $("#response").addClass("info");

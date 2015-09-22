@@ -38,6 +38,9 @@
           <configuration>
             <port>9090</port>
             <path>/</path>
+            <!--<systemProperties>-->
+              <!--<JAVA_OPTS>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005</JAVA_OPTS>-->
+            <!--</systemProperties>-->
           </configuration>
         </plugin>
         <plugin>
@@ -46,6 +49,9 @@
           <configuration>
             <port>9090</port>
             <path>/</path>
+            <!--<systemProperties>-->
+              <!--<JAVA_OPTS>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005</JAVA_OPTS>-->
+            <!--</systemProperties>-->
           </configuration>
         </plugin>
 
@@ -111,6 +117,14 @@
           <artifactId>geronimo-servlet_2.5_spec</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-bundle</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>asm</groupId>
+      <artifactId>asm</artifactId>
     </dependency>
     <dependency>
       <groupId>log4j</groupId>
